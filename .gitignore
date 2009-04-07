@@ -1,0 +1,17 @@
+*.pyc
+*.pyo
+*.swp
+*.egg-info
+*.svn
+build
+dist
+downloads/*
+bootstrap.py
+.installed.cfg
+bin
+develop-eggs
+include/
+lib
+parts
+var
+

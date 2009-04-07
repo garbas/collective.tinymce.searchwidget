@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.tinymce.searchwidget">
+
+   <include package="Products.TinyMCE" />
+   <include package="archetypes.searchwidget" />
+
+   <five:registerPackage package="." initialize=".initialize" />
+
+   <browser:resourceDirectory
+       name="collective.tinymce.searchwidget"
+       directory="static" />
+
+   <browser:page
+       name="tinymce-searchwidget"
+       for="*"
+       permission="zope2.View"
+       class=".dialog.ImageDialogView" />
+
+   <genericsetup:registerProfile
+       name="default"
+       title="TinyMCE SearchWidget Plugin"
+       directory="profiles/default" description=""
+       provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+</configure>

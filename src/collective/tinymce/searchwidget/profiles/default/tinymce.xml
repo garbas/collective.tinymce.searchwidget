@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object>
+ <resourcetypes purge="True">
+  <customplugins purge="True">
+   <element value="searchwidget|/++resource++collective.tinymce.searchwidget/editor_plugin.js" />
+  </customplugins>
+  <custombuttons purge="True">
+   <element value="searchwidget" />
+  </custombuttons>
+ </resourcetypes>
+</object>

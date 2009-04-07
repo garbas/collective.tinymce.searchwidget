@@ -1,0 +1,70 @@
+
+<tal:doctype tal:replace="structure string:&lt;!DOCTYPE html PUBLIC
+  &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+  &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;" />
+<metal:block use-macro="here/global_defines/macros/defines" />
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="collective.tinymce.searchwidget">
+
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
+          tal:define="charset site_properties/default_charset|string:utf-8"
+          tal:attributes="content string:text/html;;charset=${charset}" />
+
+    <base tal:attributes="href here/renderBase" /><!--[if lt IE 7]></base><![endif]-->
+
+    <meta name="generator" content="Plone - http://plone.org" />
+
+    <div tal:replace="structure provider:plone.htmlhead" />
+
+    <meta tal:define="metatags python:putils.listMetaTags(here).items()"
+          tal:condition="metatags"
+          tal:repeat="keyval metatags"
+          tal:attributes="name python:keyval[0];
+                          content python:keyval[1];" />
+
+    <!-- Internet Explorer Fixes -->
+    <tal:iefixstart replace="structure string:&lt;!--[if IE]&gt;" />
+        <style type="text/css" media="all" tal:condition="exists: portal/IEFixes.css"
+               tal:content="string:@import url($portal_url/IEFixes.css);">
+        </style>
+        
+        <script type="text/javascript"
+                tal:attributes="src string:${portal_url}/iefixes.js">
+        </script>
+        
+    <tal:iefixend replace="structure string:&lt;![endif]--&gt;" />
+
+    <link tal:replace="structure provider:plone.htmlhead.links" />
+
+    <!-- Disable IE6 image toolbar -->
+    <meta http-equiv="imagetoolbar" content="no" />
+    
+  <link media="screen" type="text/css" rel="stylesheet"
+        href="++resource++collective.tinymce.searchwidget/custom.css">
+  <script type="text/javascript" src="++resource++collective.tinymce.searchwidget/dialog.js"></script>
+
+<body>
+  <div id="tinymce-dialog">
+    <div tal:replace="structure provider:${view/formname}" />
+    <div class="searchResults"> </div>
+  </div>
+  <script type="text/javascript" tal:content="structure view/generate_javascript"></script>
+
+  <div class="mceActionPanel">
+	<div style="float: right">
+	  <input type="button" id="insert" name="insert" value="Insert"
+             onclick="SearchWidgetDialog.insert();" />
+	  <input type="button" id="cancel" name="cancel" value="Cancel"
+             onclick="tinyMCEPopup.close();" />
+	</div>
+  </div>
+
+</body>
+
+</html>
+
